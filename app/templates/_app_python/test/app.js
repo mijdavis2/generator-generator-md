@@ -12,16 +12,21 @@ var baseFiles = [
   '.gitignore',
   '.travis.yml',
   '.coveragerc',
-  'README.md'
+  'README.md',
+  'requirements.txt',
+  'setup.sh',
+  'tests/__init__.py',
+  testPackageName + '/__init__.py'
 ];
 
-describe('generator-generator-md:with-MIT', function () {
+describe('with-MIT', function () {
   this.timeout(10000);
 
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
       .withPrompts({
         packageName: testPackageName,
+        pythonVersion: testPythonVersion,
         username: testUsername,
         packageDescription: testPackageDescription,
         license: 'MIT'
@@ -39,13 +44,14 @@ describe('generator-generator-md:with-MIT', function () {
   });
 });
 
-describe('generator-generator-md:with-MIT', function () {
+describe('with-MIT', function () {
   this.timeout(10000);
 
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
       .withPrompts({
         packageName: testPackageName,
+        pythonVersion: testPythonVersion,
         username: testUsername,
         packageDescription: testPackageDescription,
         license: 'ApacheV2'
@@ -63,13 +69,14 @@ describe('generator-generator-md:with-MIT', function () {
   });
 });
 
-describe('generator-generator-md:no-license', function () {
+describe('no-license', function () {
   this.timeout(10000);
 
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
       .withPrompts({
         packageName: testPackageName,
+        pythonVersion: testPythonVersion,
         username: testUsername,
         packageDescription: testPackageDescription,
         license: null
@@ -90,13 +97,14 @@ describe('generator-generator-md:no-license', function () {
   });
 });
 
-describe('generator-generator-md:subdirectory', function () {
+describe('subdirectory', function () {
   this.timeout(10000);
 
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
       .withPrompts({
         packageName: testPackageName,
+        pythonVersion: testPythonVersion,
         username: testUsername,
         packageDescription: testPackageDescription,
         license: null,

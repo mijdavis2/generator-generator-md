@@ -4,25 +4,22 @@
  
 [comment]: # ([![Codacy Badge][codacy-image]][codacy-url])
 
-# generator-generator-md
- 
-[![NPM][npm-info-image]][npm-info-url]
+# <%= appName %>
 
-Opinionated yeoman generator generator
+<%= packageDescription %>
 
 ## Installation
 
 Requires [npm](https://www.npmjs.com/).
 
 ```
-npm install -g yo
-npm install -g generator-generator-md
+npm install <%= appName %>
 ```
 
 ## Usage
 
 ```
-yo generator-md
+TODO
 ```
 
 ## Testing

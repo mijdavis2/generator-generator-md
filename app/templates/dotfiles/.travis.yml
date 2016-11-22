@@ -1,13 +1,8 @@
-language: python
-python:
-  - "3.4"
-  - "3.5"
-install:
-  - "pip install -r requirements.txt"
-  - "pip install coveralls"
-script:
-  - py.test -v --cov-report term-missing --cov=<%= appName %> -r w tests
-after_success:
-  - coveralls
-  - coverage xml
-  - python-codacy-coverage -r coverage.xml
+language: node_js
+node_js:
+  - "6"
+  - "5"
+  - "4"
+after_script:
+  - NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage

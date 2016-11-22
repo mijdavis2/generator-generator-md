@@ -13,7 +13,7 @@ module.exports = yeoman.Base.extend({
     yeoman.Base.apply(this, arguments);
     this.log(yosay(
       chalk.red('Welcome!') + '\n' +
-      chalk.yellow('You\'re using the generator generator for scaffolding an opinionated yeoman generator!')
+      chalk.yellow('You\'re using the <%= appName %> generator - <%= packageDescription %>!')
     ));
   },
 
@@ -22,39 +22,24 @@ module.exports = yeoman.Base.extend({
       {
         type    : 'input',
         name    : 'useDirectory',
-        message : 'Target directory for new generator (default is current directory): \n',
+        message : 'Target directory for new application (default is current directory): \n',
         default : this.appname // Default to current folder name
       },
       {
         type   : 'input',
         name   : 'packageName',
-        message: 'Your generator name: ',
+        message: 'Your project name: ',
         default: this.appname // Default to current folder name
       },
       {
         type   : 'input',
         name   : 'packageDescription',
-        message: 'A description of your generator: '
+        message: 'A description of your package: '
       },
       {
         type   : 'input',
         name   : 'username',
         message: 'Your github username: '
-      },
-      {
-        name   : 'type',
-        message: 'Generator type: ',
-        type   : 'list',
-        choices: [
-          {
-            value: 'node',
-            name : 'node'
-          },
-          {
-            value: 'python',
-            name : 'python'
-          }
-        ]
       },
       {
         name   : 'license',
@@ -107,17 +92,8 @@ module.exports = yeoman.Base.extend({
       this._templateMap
     );
     this.fs.copyTpl(
-      this.templatePath('_index_' + this.answers.type + '/*'),
-      this.destinationPath('app/'),
-      this._templateMap
-    );
-    this.fs.copy(
-      this.templatePath('_app_' + this.answers.type + '/**/*'),
-      this.destinationPath('app/')
-    );
-    this.fs.copyTpl(
-      this.templatePath('test/*'),
-      this.destinationPath('test/'),
+      this.templatePath('tests/*'),
+      this.destinationPath('tests/'),
       this._templateMap
     );
     this.fs.copyTpl(

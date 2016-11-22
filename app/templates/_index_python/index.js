@@ -13,7 +13,7 @@ module.exports = yeoman.Base.extend({
     yeoman.Base.apply(this, arguments);
     this.log(yosay(
       chalk.red('Welcome!') + '\n' +
-      chalk.yellow('You\'re using the generator generator for scaffolding an opinionated yeoman generator!')
+      chalk.yellow('You\'re using the pyboot generator for scaffolding a python project!')
     ));
   },
 
@@ -22,19 +22,19 @@ module.exports = yeoman.Base.extend({
       {
         type    : 'input',
         name    : 'useDirectory',
-        message : 'Target directory for new generator (default is current directory): \n',
+        message : 'Target directory for new application (default is current directory): \n',
         default : this.appname // Default to current folder name
       },
       {
         type   : 'input',
         name   : 'packageName',
-        message: 'Your generator name: ',
+        message: 'Your project name: ',
         default: this.appname // Default to current folder name
       },
       {
         type   : 'input',
         name   : 'packageDescription',
-        message: 'A description of your generator: '
+        message: 'A description of your package: '
       },
       {
         type   : 'input',
@@ -42,17 +42,37 @@ module.exports = yeoman.Base.extend({
         message: 'Your github username: '
       },
       {
-        name   : 'type',
-        message: 'Generator type: ',
         type   : 'list',
+        name   : 'pythonVersion',
+        message: 'What minimum python version will you support?',
         choices: [
           {
-            value: 'node',
-            name : 'node'
+            value: ['3', '5', '2'],
+            name : '3.5.2'
           },
           {
-            value: 'python',
-            name : 'python'
+            value: ['3', '4', '5'],
+            name : '3.4.5'
+          },
+          {
+            value: ['3', '4', '3'],
+            name : '3.4.3'
+          },
+          {
+            value: ['2', '7', '11'],
+            name : '2.7.11'
+          },
+          {
+            value: ['2', '7', '10'],
+            name : '2.7.10'
+          },
+          {
+            value: ['2', '7', '9'],
+            name : '2.7.9'
+          },
+          {
+            value: ['2', '7', '8'],
+            name : '2.7.8'
           }
         ]
       },
@@ -77,6 +97,7 @@ module.exports = yeoman.Base.extend({
       }
     ]).then(function (answers) {
       this.log('package name', answers.packageName);
+      this.log('python version', answers.pythonVersion);
       this.answers = answers;
       if (this.answers.license) {
         this.answers.includeLicense = 'include LICENSE';
@@ -91,6 +112,9 @@ module.exports = yeoman.Base.extend({
       packageName: this.answers.packageName,
       appName: this.answers.packageName,
       appTitle: _.startCase(this.answers.packageName),
+      reqMajor: this.answers.pythonVersion[0],
+      reqMinor: this.answers.pythonVersion[1],
+      reqPatch: this.answers.pythonVersion[2],
       username: this.answers.username,
       userName: this.answers.username,
       packageDescription: this.answers.packageDescription,
@@ -107,17 +131,13 @@ module.exports = yeoman.Base.extend({
       this._templateMap
     );
     this.fs.copyTpl(
-      this.templatePath('_index_' + this.answers.type + '/*'),
-      this.destinationPath('app/'),
+      this.templatePath('my_app/*'),
+      this.destinationPath(this.answers.packageName + '/'),
       this._templateMap
     );
-    this.fs.copy(
-      this.templatePath('_app_' + this.answers.type + '/**/*'),
-      this.destinationPath('app/')
-    );
     this.fs.copyTpl(
-      this.templatePath('test/*'),
-      this.destinationPath('test/'),
+      this.templatePath('tests/*'),
+      this.destinationPath('tests/'),
       this._templateMap
     );
     this.fs.copyTpl(
@@ -140,6 +160,6 @@ module.exports = yeoman.Base.extend({
   },
 
   install: function () {
-    this.installDependencies();
+    // this.installDependencies();
   }
 });

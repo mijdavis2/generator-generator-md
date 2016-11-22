@@ -15,7 +15,7 @@ var baseFiles = [
   'README.md'
 ];
 
-describe('generator-generator-md:with-MIT', function () {
+describe('with-MIT', function () {
   this.timeout(10000);
 
   before(function () {
@@ -39,7 +39,7 @@ describe('generator-generator-md:with-MIT', function () {
   });
 });
 
-describe('generator-generator-md:with-MIT', function () {
+describe('with-MIT', function () {
   this.timeout(10000);
 
   before(function () {
@@ -63,7 +63,7 @@ describe('generator-generator-md:with-MIT', function () {
   });
 });
 
-describe('generator-generator-md:no-license', function () {
+describe('no-license', function () {
   this.timeout(10000);
 
   before(function () {
@@ -90,7 +90,7 @@ describe('generator-generator-md:no-license', function () {
   });
 });
 
-describe('generator-generator-md:subdirectory', function () {
+describe('subdirectory', function () {
   this.timeout(10000);
 
   before(function () {
