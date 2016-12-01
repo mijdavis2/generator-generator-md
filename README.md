@@ -6,7 +6,7 @@
 
 # generator-generator-md
  
-[![NPM][npm-info-image]][npm-info-url]
+[![NPM][npm-info-image]][npm-info-url][![NPM](https://nodei.co/npm-dl/generator-generator-md.png?height=3)](https://nodei.co/npm/generator-generator-md/)
 
 Opinionated yeoman generator generator
 
