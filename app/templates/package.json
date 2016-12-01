@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git://github.com/<%= userName %>/<%= appName %>.git"
   },
-  "author": "<%= userName %> <<%= authorEmail %>>",
+  "author": "<%= userName %> <<%= userEmail %>>",
   "license": "<%= license %>",
   "dependencies": {
     "chalk": "^1.0.0",
