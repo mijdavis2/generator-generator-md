@@ -44,7 +44,7 @@ module.exports = yeoman.Base.extend({
       {
         type   : 'input',
         name   : 'userEmail',
-        message: 'Your github username: '
+        message: 'Your email: '
       },
       {
         name   : 'type',

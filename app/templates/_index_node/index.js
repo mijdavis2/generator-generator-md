@@ -42,6 +42,11 @@ module.exports = yeoman.Base.extend({
         message: 'Your github username: '
       },
       {
+        type   : 'input',
+        name   : 'userEmail',
+        message: 'Your email: '
+      },
+      {
         name   : 'license',
         message: 'Select license:',
         type   : 'list',
