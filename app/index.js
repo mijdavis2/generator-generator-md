@@ -42,6 +42,11 @@ module.exports = yeoman.Base.extend({
         message: 'Your github username: '
       },
       {
+        type   : 'input',
+        name   : 'userEmail',
+        message: 'Your github username: '
+      },
+      {
         name   : 'type',
         message: 'Generator type: ',
         type   : 'list',
@@ -93,6 +98,7 @@ module.exports = yeoman.Base.extend({
       appTitle: _.startCase(this.answers.packageName),
       username: this.answers.username,
       userName: this.answers.username,
+      userEmail: this.answers.userEmail,
       packageDescription: this.answers.packageDescription,
       license: this.answers.license,
       year: this._defaultYear(),
