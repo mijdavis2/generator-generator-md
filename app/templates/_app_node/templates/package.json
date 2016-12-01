@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git://github.com/<%= userName %>/<%= appName %>.git"
   },
-  "author": "<%= authorName %> <<%= authorEmail %>>",
+  "author": "<%= userName %> <<%= authorEmail %>>",
   "license": "<%= license %>",
   "dependencies": {
   },
